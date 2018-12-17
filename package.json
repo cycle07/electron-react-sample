@@ -1,0 +1,21 @@
+{
+  "name": "mac-sample",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron . unsafe-eval",
+    "g": "gulp serve",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "p": "electron-packager"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^3.0.10",
+    "electron-connect": "^0.6.3",
+    "electron-installer-dmg": "^2.0.0",
+    "electron-packager": "^13.0.1",
+    "gulp": "^3.9.1"
+  }
+}
