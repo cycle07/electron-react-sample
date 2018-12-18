@@ -16,5 +16,5 @@ app.on('ready', function () {
     width: 400,
     height: 300
   });
-  mainWindow.loadURL('file://' + __dirname + '/../web/pageA/index.html');
+  mainWindow.loadURL('file://' + __dirname + '/../web/dist/index.html');
 });

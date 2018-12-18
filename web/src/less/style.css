@@ -1,0 +1,12 @@
+/* @font-face {
+  font-family: 'MyFont';
+  src: url('./cour.ttf') format('woff2');
+  font-weight: 600;
+  font-style: normal;
+} */
+
+.hello {
+  color: greenyellow;
+  /* font-family: 'MyFont'; */
+  background: url('../img/app.png');
+}
