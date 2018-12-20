@@ -6,7 +6,6 @@ let paths = require('path');
 var electron = require('electron-connect').server.create();
 var electronPackage = require('electron-packager');
 let webpack = require('webpack');
-let webpackConfig = require('./webpack.production.js');
 // var runSequence = require('run-sequence');
 
 let timeoutList = {}; // 防止多次保持按键和git更新时
@@ -37,7 +36,6 @@ gulp.task('serve', function () {
 // });
 
 const renderRenderer = () => {
-  console.log(123132);
   electron.reload();
 }
 
@@ -45,27 +43,28 @@ gulp.task('packager', function() {
   electronPackage();
 });
 
-gulp.task('goweb', () => {
-  const matches = glob.sync(
-    `${__dirname}/web/{!dist,/src/**/*.*}`
-  );
-  // console.log(matches);
+gulp.task('watch_web', () => {
+  // const matches = glob.sync( // 记录entry触发项目开始监听
+  //   `${__dirname}/web/{!dist,/src/**/*.*}`
+  // );
+  const matches = ['E:/electron/Mac-sample/web/src/index.js'];
   gulp.watch(matches).on('change', event => {
-    console.log(+new Date());
     const key = event.path;
-    if (!timeoutList[key]) {
-      console.log('get in');
+    if (!timeoutList[key]) { // 处理product中多项目情况
+      console.log('Start Listening');
       timeoutList[key] = true;
-      webpack(webpackConfig, (err, state) => {
-        console.log('====================End====================');
+      webpack(require('./webpack.production.js').webpackDevConf, (err, state) => {
+        // console.log(state);
+        // console.log(err);
         if (!err) {
           renderRenderer();
+          console.log('====================End====================');
         }
       });
     }
   });
 });
 
-gulp.task('go', ['goweb', 'serve']);
+gulp.task('go', ['watch_web', 'serve']);
 
 gulp.task('default', ['serve']);

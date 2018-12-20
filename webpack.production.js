@@ -9,7 +9,7 @@ class Wp {
       app: './web/src/index.js',
       print: './web/src/print.js'
     };
-    this.devtool = 'inline-source-map'; // 编译后查询报错位置
+    this.devtool = 'eval-source-map'; // 编译后查询报错位置
     this.plugins = [
       // new CleanWebpackPlugin(['dist']), // 编译前删除文件
       new HtmlWebpackPlugin({
@@ -49,7 +49,7 @@ class Wp {
         // }
       ]
     };
-    this.watch = true; // 开启瞧峰模式
+    this.watch = true; // 开启瞧峰模式[真正监听全局的是这里...]
     this.watchOptions = {
       aggregateTimeout: 300, // 300毫秒内只让最后一次改动触发编译
       poll: 1000, // 每一秒检查一次有没有变化
@@ -58,4 +58,16 @@ class Wp {
   }
 };
 
-module.exports = { ...new Wp };
+class WpPro extends Wp {
+  constructor(props) {
+    super(props);
+  }
+}
+
+let build = () => {
+  return { ...new WpPro }
+}
+
+build.webpackDevConf = { ...new Wp }
+
+module.exports = build;
