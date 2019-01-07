@@ -5,9 +5,8 @@
   "main": "main/index.js",
   "scripts": {
     "start": "electron . unsafe-eval",
-    "ws": "webpack --config webpack.production.js",
+    "b": "webpack --config webpack.config.js",
     "g": "gulp go",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "p": "electron-packager"
   },
   "author": "",

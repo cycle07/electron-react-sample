@@ -1,13 +1,18 @@
+/*
+ ** pro和dev都有的，没有超过400行能不拆分就不拆分 
+ */
 const path = require('path');
+const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+// 公共的配置
 class Wp {
   constructor() {
     // entry: './web/src/index.js',
     this.entry = {
-      app: './web/src/index.js',
-      print: './web/src/print.js'
+      app: './web/src/index.js'
+      // print: './web/src/print.js'
     };
     this.devtool = 'eval-source-map'; // 编译后查询报错位置
     this.plugins = [
@@ -16,30 +21,25 @@ class Wp {
         title: 'Output Management',
         inject: false,
         template: require('html-webpack-template'),
-        scripts: [
-          "../../renderer/renderer.js"
-        ],
-        headHtmlSnippet: "<script>require('electron-connect').client.create()</script>"
+        scripts: ['../../renderer/renderer.js'],
+        headHtmlSnippet:
+          "<script>require('electron-connect').client.create()</script>"
       })
     ];
     this.output = {
       filename: '[name].main.js',
       path: path.resolve(__dirname + '/web', 'dist')
+      // publicPath: '/' // 中间键请求头使用到这个
     };
     this.module = {
       rules: [
         {
           test: /\.css$/,
-          use: [
-            'style-loader',
-            'css-loader'
-          ]
+          use: ['style-loader', 'css-loader']
         },
         {
           test: /\.(png|svg|jpg|gif)$/,
-          use: [
-            'file-loader'
-          ]
+          use: ['file-loader']
         }
         // {
         //   test: /\.(woff|woff2|eot|ttf|otf)$/,
@@ -56,18 +56,46 @@ class Wp {
       ignored: /node_modules/ // 这个不监听
     };
   }
-};
+}
 
+// 正式上线
 class WpPro extends Wp {
   constructor(props) {
     super(props);
+    this.mode = 'production';
+    this.plugins = [
+      ...this.plugins,
+      new webpack.DefinePlugin({
+        __DEV__: false,
+        __PRE__: true,
+        __BUILD_EXT__: '".min"'
+      })
+    ];
+  }
+}
+
+// 开发模式
+class WpDev extends Wp {
+  constructor(props) {
+    super(props);
+    this.mode = 'development';
+    this.plugins = [
+      ...this.plugins,
+      new webpack.DefinePlugin({
+        __DEV__: true,
+        __PRE__: false,
+        __BUILD_EXT__: '""'
+      })
+    ];
   }
 }
 
 let build = () => {
-  return { ...new WpPro }
-}
+  return { ...new WpPro() };
+};
 
-build.webpackDevConf = { ...new Wp }
+// 开发模式通过暴露的方法给gulp使用
+build.webpackDevConf = { ...new WpDev() };
 
+// 直接暴露bild给package.json使用
 module.exports = build;
