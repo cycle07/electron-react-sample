@@ -14,7 +14,7 @@
   "devDependencies": {
     "clean-webpack-plugin": "^1.0.0",
     "css-loader": "^2.0.1",
-    "electron": "^3.0.13",
+    "electron": "^18.3.7",
     "electron-connect": "^0.6.3",
     "electron-installer-dmg": "^2.0.0",
     "electron-packager": "^13.0.1",
