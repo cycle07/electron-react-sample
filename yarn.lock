@@ -2,9 +2,9 @@
 # yarn lockfile v1
 
 
-"@types/node@^8.0.24":
-  version "8.10.38"
-  resolved "http://registry.npm.taobao.org/@types/node/download/@types/node-8.10.38.tgz#e05c201a668492e534b48102aca0294898f449f6"
+"@types/node@^10.1.4":
+  version "10.17.60"
+  resolved "https://registry.npmmirror.com/@types/node/-/node-10.17.60.tgz#35f3d6213daed95da7f0f73e75bcc6980e90597b"
 
 "@webassemblyjs/ast@1.7.11":
   version "1.7.11"
@@ -1212,11 +1212,11 @@ electron-packager@^13.0.1:
     semver "^5.3.0"
     yargs-parser "^11.0.0"
 
-electron@^3.0.12:
-  version "3.0.12"
-  resolved "http://registry.npm.taobao.org/electron/download/electron-3.0.12.tgz#7486ff1c60e9c22d8aadaee620695c42c9ddb2ac"
+electron@^3.0.13:
+  version "3.1.13"
+  resolved "https://registry.npmmirror.com/electron/-/electron-3.1.13.tgz#aeb276f4cf5e3785078b6495e982ee46d553a5d2"
   dependencies:
-    "@types/node" "^8.0.24"
+    "@types/node" "^10.1.4"
     electron-download "^4.1.0"
     extract-zip "^1.0.3"
 
@@ -1862,9 +1862,9 @@ gulp-util@^3.0.0:
     through2 "^2.0.0"
     vinyl "^0.5.0"
 
-gulp@3.9.1:
+gulp@^3.9.1:
   version "3.9.1"
-  resolved "http://registry.npm.taobao.org/gulp/download/gulp-3.9.1.tgz#571ce45928dd40af6514fc4011866016c13845b4"
+  resolved "https://registry.npmmirror.com/gulp/-/gulp-3.9.1.tgz#571ce45928dd40af6514fc4011866016c13845b4"
   dependencies:
     archy "^1.0.0"
     chalk "^1.0.0"
@@ -2013,6 +2013,10 @@ html-webpack-plugin@^3.2.0:
     tapable "^1.0.0"
     toposort "^1.0.0"
     util.promisify "1.0.0"
+
+html-webpack-template@^6.2.0:
+  version "6.2.0"
+  resolved "https://registry.npmmirror.com/html-webpack-template/-/html-webpack-template-6.2.0.tgz#3c9f15f616f4500927909d34adfbccb20d37943c"
 
 htmlparser2@~3.3.0:
   version "3.3.0"
@@ -3515,8 +3519,8 @@ q@^1.1.2:
   resolved "http://registry.npm.taobao.org/q/download/q-1.5.1.tgz#7e32f75b41381291d04611f1bf14109ac00651d7"
 
 qs@~6.5.2:
-  version "6.5.2"
-  resolved "http://registry.npm.taobao.org/qs/download/qs-6.5.2.tgz#cb3ae806e8740444584ef154ce8ee98d403f3e36"
+  version "6.5.3"
+  resolved "https://registry.yarnpkg.com/qs/-/qs-6.5.3.tgz#3aeeffc91967ef6e35c0e488ef46fb296ab76aad"
 
 querystring-es3@^0.2.0:
   version "0.2.1"
